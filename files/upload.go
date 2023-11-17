@@ -21,3 +21,9 @@ func (f *Files) UploadIO(ctx context.Context, data io.Reader, extension string) 
 
 	return
 }
+
+func (f *Files) UploadBytes(ctx context.Context, payload []byte, extension string) (res whatsmeow.UploadResponse, err error) {
+
+	res, err = f.cli.Upload(ctx, payload, types.GetMediaTypeByExtension(extension))
+	return
+}
